@@ -8,14 +8,13 @@
         
         <form method="POST" action="/articles">
             @csrf
-            <div class="form-group" style="margin-bottom: 15px;">
-                <label for="titre" style="display: block; margin-bottom: 5px; font-weight: bold;">Titre de l'article :</label>
-                <input type="text" id="titre" name="titre" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box;">
+            <div style="background-color: #e7f3ff; padding: 15px; border-radius: 5px; margin-bottom: 20px; border-left: 4px solid #007bff;">
+                <strong>ℹ️ Information :</strong> Cet article sera publié sous le nom de <strong>{{ Auth::user()->name }}</strong>
             </div>
             
             <div class="form-group" style="margin-bottom: 15px;">
-                <label for="auteur" style="display: block; margin-bottom: 5px; font-weight: bold;">Auteur :</label>
-                <input type="text" id="auteur" name="auteur" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box;">
+                <label for="titre" style="display: block; margin-bottom: 5px; font-weight: bold;">Titre de l'article :</label>
+                <input type="text" id="titre" name="titre" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box;">
             </div>
             
             <div class="form-group" style="margin-bottom: 15px;">

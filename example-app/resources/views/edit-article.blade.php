@@ -8,14 +8,18 @@
         
         <form method="POST" action="/articles/{{ $article->id }}/modifier">
             @csrf
+            <div style="background-color: #fff3cd; padding: 15px; border-radius: 5px; margin-bottom: 20px; border-left: 4px solid #ffc107;">
+                <strong>⚠️ Attention :</strong> En modifiant cet article, l'auteur sera mis à jour avec votre nom (<strong>{{ Auth::user()->name }}</strong>)
+            </div>
+            
             <div class="form-group" style="margin-bottom: 15px;">
                 <label for="titre" style="display: block; margin-bottom: 5px; font-weight: bold;">Titre de l'article :</label>
                 <input type="text" id="titre" name="titre" value="{{ $article->titre }}" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box;">
             </div>
             
             <div class="form-group" style="margin-bottom: 15px;">
-                <label for="auteur" style="display: block; margin-bottom: 5px; font-weight: bold;">Auteur :</label>
-                <input type="text" id="auteur" name="auteur" value="{{ $article->auteur }}" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box;">
+                <label style="display: block; margin-bottom: 5px; font-weight: bold;">Auteur actuel :</label>
+                <p style="background-color: #f8f9fa; padding: 10px; border-radius: 5px; margin: 0;"><em>{{ $article->auteur }}</em></p>
             </div>
             
             <div class="form-group" style="margin-bottom: 15px;">

@@ -6,11 +6,18 @@
     <div class="container">
         <h1>📚 Liste des Articles</h1>
         
-        <div style="margin-bottom: 20px;">
-            <a href="/articles/nouveau" style="background-color: #28a745; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">
-                ➕ Ajouter un nouvel article
-            </a>
-        </div>
+        @auth
+            <div style="margin-bottom: 20px;">
+                <a href="/articles/nouveau" style="background-color: #28a745; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">
+                    ➕ Ajouter un nouvel article
+                </a>
+            </div>
+        @else
+            <div style="background-color: #e7f3ff; padding: 15px; border-radius: 5px; margin-bottom: 20px; border-left: 4px solid #007bff;">
+                <strong>ℹ️ Information :</strong> 
+                <a href="{{ route('login') }}">Connectez-vous</a> pour ajouter, modifier ou supprimer des articles.
+            </div>
+        @endauth
         @if(session('success'))
             <div style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px; border-left: 4px solid #28a745;">
                 <strong>✅ Succès !</strong> {{ session('success') }}
@@ -28,12 +35,17 @@
         @if($articles->count() > 0) <!-- Vérifie s'il y a des articles -->
             <ul>
                 @foreach($articles as $article)
-                    <li>
+                    <li style="border-bottom: 1px solid #eee; padding: 15px 0;">
                         <h2>{{ $article->titre }}</h2>
                         <p>{{ $article->contenu }}</p>
                         <p><em>Écrit par {{ $article->auteur }}</em></p>
-                        <a href="/articles/{{ $article->id }}/supprimer" style="color: #dc3545;">🗑️ Supprimer</a>
-                        <a href="/articles/{{ $article->id }}/modifier" style="margin-left: 10px; color: #007bff;">✏️ Modifier</a>
+                        
+                        @auth
+                            <div style="margin-top: 10px;">
+                                <a href="/articles/{{ $article->id }}/modifier" style="color: #007bff; margin-right: 15px;">✏️ Modifier</a>
+                                <a href="/articles/{{ $article->id }}/supprimer" style="color: #dc3545;">🗑️ Supprimer</a>
+                            </div>
+                        @endauth
                     </li>
                 @endforeach
             </ul>
