@@ -12,6 +12,17 @@
             padding: 20px;
             background-color: #f5f5f5;
         }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+        }
         .nav {
             margin-bottom: 20px;
         }

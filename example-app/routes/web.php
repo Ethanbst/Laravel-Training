@@ -45,7 +45,7 @@ Route::post('articles', function () { # Route pour gérer la soumission du formu
     $article->auteur = request('auteur');
     $article->save();
 
-    return redirect('/articles');
+    return redirect('/articles')->with('success', 'Article ajouté avec succès.');
 });
 
 # Suppression d'article
