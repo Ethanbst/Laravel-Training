@@ -66,3 +66,25 @@ Route::post('/articles/{id}/supprimer', function ($id) { # Route pour gérer la 
     }
     return redirect('/articles')->with('error', 'Article non trouvé.');
 });
+
+# Modification d'article
+
+Route::get('articles/{id}/modifier', function ($id) { # Route pour afficher le formulaire de modification d'article
+    $article = App\Models\Article::find($id);
+    if (!$article) {
+        return redirect('/articles')->with('error', 'Article non trouvé.');
+    }
+    return view('edit-article', ['article' => $article]);
+});
+
+Route::post('/articles/{id}/modifier', function ($id) { # Route pour gérer la soumission du formulaire de modification
+    $article = App\Models\Article::find($id);
+    if ($article) {
+        $article->titre = request('titre');
+        $article->contenu = request('contenu');
+        $article->auteur = request('auteur');
+        $article->save();
+        return redirect('/articles')->with('success', 'Article modifié avec succès.');
+    }
+    return redirect('/articles')->with('error', 'Article non trouvé.');
+});
