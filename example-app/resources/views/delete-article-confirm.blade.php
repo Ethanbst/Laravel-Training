@@ -11,29 +11,30 @@
 @section('content')
     <div class="container">
 
-        <h1>✏️ Créer un nouvel article</h1>
-        
-        <form method="POST" action="/articles">
+        <h1>✏️ Supprimer un article</h1>
+
+        <form method="POST" action="/articles/{{ $article->id }}/supprimer">
             @csrf
             <div class="form-group">
                 <label for="titre">Titre de l'article :</label>
-                <input type="text" id="titre" name="titre" required>
+                {{ $article->titre }}
             </div>
             
             <div class="form-group">
                 <label for="auteur">Auteur :</label>
-                <input type="text" id="auteur" name="auteur" required>
+                {{ $article->auteur }}
             </div>
             
             <div class="form-group">
                 <label for="contenu">Contenu :</label>
-                <textarea id="contenu" name="contenu" rows="6" required></textarea>
+            {{ $article->contenu }}
             </div>
-            
-            <button type="submit">📝 Créer l'article</button>
+
+            <button type="submit">🗑️ Supprimer l'article</button>
             <a href="/articles" style="margin-left: 10px; color: #6c757d;">Annuler</a>
         </form>
     </div>
 @endsection
 </body>
+</html>
 </html>

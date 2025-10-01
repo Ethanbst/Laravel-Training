@@ -63,6 +63,7 @@
                         <h2>{{ $article->titre }}</h2>
                         <p>{{ $article->contenu }}</p>
                         <p><em>Écrit par {{ $article->auteur }}</em></p>
+                        <a href="/articles/{{ $article->id }}/supprimer" style="color: #dc3545;">🗑️ Supprimer</a>
                     </li>
                 @endforeach
             </ul>

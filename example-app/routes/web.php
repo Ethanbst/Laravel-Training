@@ -32,11 +32,13 @@ Route::get('/articles', function () {
     return view('articles', ['articles' => $articles]); #Passe les articles à la vue
 });
 
-Route::get('/articles/nouveau', function () {
+# Ajout d'article
+
+Route::get('/articles/nouveau', function () { # Route pour afficher le formulaire d'ajout d'article
     return view('add-article');
 });
 
-Route::post('articles', function () {
+Route::post('articles', function () { # Route pour gérer la soumission du formulaire
     $article = new App\Models\Article();
     $article->titre = request('titre');
     $article->contenu = request('contenu');
@@ -44,4 +46,23 @@ Route::post('articles', function () {
     $article->save();
 
     return redirect('/articles');
+});
+
+# Suppression d'article
+
+Route::get('/articles/{id}/supprimer', function ($id) { # Route pour afficher le formulaire de suppression d'article
+    $article = App\Models\Article::find($id);
+    if (!$article) {
+        return redirect('/articles')->with('error', 'Article non trouvé.');
+    }
+    return view('delete-article-confirm', ['article' => $article]);
+});
+
+Route::post('/articles/{id}/supprimer', function ($id) { # Route pour gérer la soumission du formulaire de suppression
+    $article = App\Models\Article::find($id);
+    if ($article) {
+        $article->delete();
+        return redirect('/articles')->with('success', 'Article supprimé avec succès.');
+    }
+    return redirect('/articles')->with('error', 'Article non trouvé.');
 });
