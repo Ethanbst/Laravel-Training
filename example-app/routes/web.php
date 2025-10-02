@@ -6,18 +6,18 @@ use Illuminate\Support\Facades\Route;
 
 // Route d'accueil
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.welcome');
 });
 
 // Vos routes publiques (pas besoin d'être connecté)
 Route::get('/a-propos', function () {
-    return view('a-propos');
+    return view('pages.a-propos');
 });
 
 Route::get('/contact', function () {
     $titre = "Contactez-nous";
     $email = "contact@monsite.com";
-    return view('contact', compact('titre', 'email'));
+    return view('pages.contact', compact('titre', 'email'));
 });
 
 Route::get('/articles', [ArticleController::class, 'index']);

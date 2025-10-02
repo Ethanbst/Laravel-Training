@@ -12,13 +12,13 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::all();
-        return view('articles', compact('articles'));
+        return view('articles.index', compact('articles'));
     }
 
     // Afficher le formulaire d'ajout
     public function create()
     {
-        return view('add-article');
+        return view('articles.create');
     }
 
     // Sauvegarder un nouvel article
@@ -37,7 +37,7 @@ class ArticleController extends Controller
     public function edit($id)
     {
         $article = Article::findOrFail($id);
-        return view('edit-article', compact('article'));
+        return view('articles.edit', compact('article'));
     }
 
     // Mettre à jour un article
@@ -57,7 +57,7 @@ class ArticleController extends Controller
     public function confirmDelete($id)
     {
         $article = Article::findOrFail($id);
-        return view('delete-article-confirm', compact('article'));
+        return view('articles.delete-confirm', compact('article'));
     }
 
     // Supprimer un article

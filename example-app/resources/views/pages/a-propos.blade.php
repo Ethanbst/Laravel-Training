@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 
 @section('title', 'À propos')
 
@@ -25,7 +25,7 @@
         
         <div style="background-color: #e7f3ff; padding: 15px; border-radius: 5px; margin-top: 20px;">
             <strong>💡 Astuce :</strong> Cette page utilise le moteur de template Blade de Laravel. 
-            Le fichier se trouve dans <code>resources/views/a-propos.blade.php</code>
+            Le fichier se trouve dans <code>resources/views/pages/a-propos.blade.php</code>
         </div>
     </div>
 @endsection
